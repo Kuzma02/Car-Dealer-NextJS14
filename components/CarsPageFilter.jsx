@@ -4,7 +4,7 @@ const CarsPageFilter = () => {
   return (
     <div className="flex gap-x-5 mt-5 max-md:flex-wrap max-md:gap-y-5">
       <select className="select select-bordered w-full max-w-xs">
-        <option disabled selected>
+        <option disabled>
           Condition
         </option>
         <option>New</option>
@@ -12,7 +12,7 @@ const CarsPageFilter = () => {
       </select>
 
       <select className="select select-bordered w-full max-w-xs">
-        <option disabled selected>
+        <option disabled>
           Category
         </option>
         <option>New</option>
@@ -20,7 +20,7 @@ const CarsPageFilter = () => {
       </select>
 
       <select className="select select-bordered w-full max-w-xs">
-        <option disabled selected>
+        <option disabled>
           Type
         </option>
         <option>New</option>
@@ -28,7 +28,7 @@ const CarsPageFilter = () => {
       </select>
 
       <select className="select select-bordered w-full max-w-xs">
-        <option disabled selected>
+        <option disabled>
           Any Makes
         </option>
         <option>New</option>
@@ -36,7 +36,7 @@ const CarsPageFilter = () => {
       </select>
 
       <select className="select select-bordered w-full max-w-xs">
-        <option disabled selected>
+        <option disabled>
           Any Models
         </option>
         <option>New</option>
