@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Car",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "carTitle": {
+      "type": "string",
+      "required": true
+    },
+    "carImages": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mileage": {
+      "type": "string",
+      "required": true
+    },
+    "fuelType": {
+      "type": "enumeration",
+      "enum": [
+        "diesel",
+        "petrol"
+      ],
+      "required": true
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "carDescription": {
+      "type": "blocks",
+      "required": true
+    },
+    "carMainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "used"
+      ],
+      "required": true
+    },
+    "year": {
+      "type": "biginteger",
+      "required": true
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": [
+        "automatic",
+        "manual",
+        "cvt"
+      ],
+      "required": true
+    }
+  }
+}
