@@ -4,7 +4,6 @@ import CarsSortBy from "@/components/CarsSortBy";
 import PageHeader from "@/components/PageHeader";
 
 const fetchSortedCars = async (sort) => {
-  
   let data;
   switch (sort) {
     case "newestCars":
@@ -38,29 +37,78 @@ const fetchSortedCars = async (sort) => {
 };
 
 const fetchFilteredCars = async (condition, transmission, fuel) => {
-
   let data;
-  data = await fetch(`http://localhost:1337/api/cars?populate=*${fuel == "all" ? '' : `&filters[fuelType][$eq]=${fuel}`}${condition == "all" ? '' : `&filters[condition][$eq]=${condition}`}${transmission == "all" ? '' : `&filters[transmission][$eq]=${transmission}`}`);
+  data = await fetch(
+    `http://localhost:1337/api/cars?populate=*${
+      fuel == "all" ? "" : `&filters[fuelType][$eq]=${fuel}`
+    }${condition == "all" ? "" : `&filters[condition][$eq]=${condition}`}${
+      transmission == "all" ? "" : `&filters[transmission][$eq]=${transmission}`
+    }`
+  );
   return data.json();
-}
+};
+
+const fetchFilteredAndSortedCars = async (
+  sort,
+  condition,
+  transmission,
+  fuel
+) => {
+  let data;
+  let sortQuery = "";
+
+  switch (sort) {
+    case "newestCars":
+      sortQuery="&sort=id:asc";
+      break;
+    case "oldestCars":
+      sortQuery="&sort=id:desc";
+      break;
+    case "lowestPrice":
+      sortQuery="&sort=price:asc";
+      break;
+    
+    case "highestPrice":
+      sortQuery="&sort=price:desc";
+      break;
+  
+    default:
+      sortQuery="";
+      break;
+  }
+
+  data = await fetch(
+    `http://localhost:1337/api/cars?populate=*${
+      fuel === "all" || !fuel ? "" : `&filters[fuelType][$eq]=${fuel}`
+    }${
+      condition === "all" || !condition
+        ? ""
+        : `&filters[condition][$eq]=${condition}`
+    }${
+      transmission === "all" || !transmission
+        ? ""
+        : `&filters[transmission][$eq]=${transmission}`
+    }${sortQuery === "" ? "" : sortQuery}`
+  );
+  return data.json();
+};
 
 const Cars = async ({ params, searchParams }) => {
-  const { sort } = searchParams;
   let cars;
-  const { condition, transmission, fuel } = searchParams;
-  if(condition){
-    cars = await fetchFilteredCars(condition, transmission, fuel);
-  }else{
-    cars = await fetchSortedCars(sort);
-  }
-  
+  const { sort, condition, transmission, fuel } = searchParams;
+
+  // if(condition){
+  //   cars = await fetchFilteredCars(condition, transmission, fuel);
+  // }else{
+  //   cars = await fetchSortedCars(sort);
+  // }
+  cars = await fetchFilteredAndSortedCars(sort, condition, transmission, fuel);
 
   return (
     <>
       <div className="max-w-7xl mx-auto px-5">
         <PageHeader />
-        <CarsPageFilter />
-        <CarsSortBy />
+        <CarsPageFilter carsNumber={cars?.meta?.pagination?.total} />
       </div>
 
       <div
@@ -80,7 +128,11 @@ const Cars = async ({ params, searchParams }) => {
                 price={car?.attributes?.price}
               />
             ))}
-            { cars.data.length === 0 && <h2 className="text-4xl py-10 max-sm:text-2xl">No cars found for the given search</h2> }
+          {cars && cars.data.length === 0 && (
+            <h2 className="text-4xl py-10 max-sm:text-2xl">
+              No cars found for the given search
+            </h2>
+          )}
         </div>
       </div>
     </>

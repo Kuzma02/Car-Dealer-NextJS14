@@ -6,9 +6,9 @@ const fetchCars = async () => {
   return data.json();
 } 
 
-const CarsSection = async ({ sectionTitle, sectionDesc, searchParams}) => {
+const CarsSection = async ({ sectionTitle, sectionDesc}) => {
   const cars = await fetchCars();
-  console.log(searchParams);
+
   return (
     <div className="mt-5 font-bold text-black max-sm:px-2 max-w-screen-2xl mx-auto
     ">
