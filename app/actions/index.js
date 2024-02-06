@@ -29,5 +29,5 @@ export async function sortCars(formData) {
 }
 
 export async function filterCars(formData){
-  redirect(`/cars?condition=${formData.get("conditions") || "all"}&model=${formData.get("models") || 'all'}&fuel=${formData.get("fuels") || 'all'}`);
+  redirect(`/cars?condition=${formData.get("conditions") || "all"}&transmission=${formData.get("transmissions") || 'all'}&fuel=${formData.get("fuels") || 'all'}`);
 }

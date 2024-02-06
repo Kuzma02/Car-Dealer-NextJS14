@@ -20,6 +20,7 @@ const CarsSection = async ({ sectionTitle, sectionDesc, searchParams}) => {
         {cars && cars.data.map((car) => (
           <CarElement key={car.id} carTitle={car?.attributes?.carTitle} carImage={car?.attributes?.carMainImage?.data?.attributes?.url} mileage={car?.attributes?.mileage} fuelType={car?.attributes?.fuelType} transmission={car?.attributes?.transmission} price={car?.attributes?.price} />
         ))}
+        
       </div>
     </div>
   );

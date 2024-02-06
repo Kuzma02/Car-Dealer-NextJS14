@@ -37,18 +37,19 @@ const fetchSortedCars = async (sort) => {
   return data.json();
 };
 
-const fetchFilteredCars = async (condition, model, fuel) => {
+const fetchFilteredCars = async (condition, transmission, fuel) => {
+
   let data;
-  data = await fetch(`http://localhost:1337/api/cars?populate=*${fuel == "all" ? '' : `&filters[fuelType][$eq]=${fuel}`}`);
+  data = await fetch(`http://localhost:1337/api/cars?populate=*${fuel == "all" ? '' : `&filters[fuelType][$eq]=${fuel}`}${condition == "all" ? '' : `&filters[condition][$eq]=${condition}`}${transmission == "all" ? '' : `&filters[transmission][$eq]=${transmission}`}`);
   return data.json();
 }
 
 const Cars = async ({ params, searchParams }) => {
   const { sort } = searchParams;
   let cars;
-  const { condition, model, fuel } = searchParams;
+  const { condition, transmission, fuel } = searchParams;
   if(condition){
-    cars = await fetchFilteredCars(condition, model, fuel);
+    cars = await fetchFilteredCars(condition, transmission, fuel);
   }else{
     cars = await fetchSortedCars(sort);
   }
@@ -79,6 +80,7 @@ const Cars = async ({ params, searchParams }) => {
                 price={car?.attributes?.price}
               />
             ))}
+            { cars.data.length === 0 && <h2 className="text-4xl py-10 max-sm:text-2xl">No cars found for the given search</h2> }
         </div>
       </div>
     </>

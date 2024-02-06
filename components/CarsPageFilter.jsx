@@ -3,32 +3,25 @@ import React from "react";
 
 const CarsPageFilter = () => {
   return (
-    <form className="flex gap-x-5 mt-5 max-md:flex-wrap max-md:gap-y-5" action={filterCars}>
-      <select defaultValue="all" className="select border-2 border-gray-400 px-2 outline-none w-full max-w-xs" name="conditions">
+    <form className="flex gap-x-5 mt-5 max-xl:flex-wrap max-md:gap-y-5" action={filterCars}>
+      <select defaultValue="all" className="select border-gray-400 py-2 px-2 border-2 select-bordered w-full max-w-xs outline-none" name="conditions">
         <option value="all">
           All Conditions
         </option>
-        <option value="conditionNew">New</option>
-        <option value="conditionUsed">Used</option>
+        <option value="new">New</option>
+        <option value="used">Used</option>
       </select>
 
-      <select defaultValue="all" className="select border-2 border-gray-400 px-2 w-full max-w-xs" name="models">
+      <select defaultValue="all" className="select border-gray-400 py-2 px-2 border-2 select-bordered w-full max-w-xs outline-none" name="transmissions">
         <option value="all">
-          All Models
+          All Transmissions
         </option>
-        <option value="modelAudi">Audi</option>
-        <option value="modelBentley">Bentley</option>
-        <option value="modelBMW">BMW</option>
-        <option value="modelFord">Ford</option>
-        <option value="modelMercedes">Mercedes Benz</option>
-        <option value="modelNissan">Nissan</option>
-        <option value="modelPeugeot">Peugeot</option>
-        <option value="modelPorsche">Porsche</option>
-        <option value="modelToyota">Toyota</option>
-        <option value="modelVolkswagen">Volkswagen</option>
+        <option value="manual">Manual</option>
+        <option value="automatic">Automatic</option>
+        <option value="cvt">CVT</option>
       </select>
 
-      <select defaultValue="all" className="select border-2 border-gray-400 px-2 w-full max-w-xs" name="fuels">
+      <select defaultValue="all" className="select border-gray-400 py-2 px-2 border-2 select-bordered w-full max-w-xs outline-none" name="fuels">
         <option value="all">
           All Fuel Types
         </option>
