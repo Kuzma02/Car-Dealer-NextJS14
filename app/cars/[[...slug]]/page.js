@@ -3,7 +3,7 @@ import CarsPageFilter from "@/components/CarsPageFilter";
 import CarsSortBy from "@/components/CarsSortBy";
 import PageHeader from "@/components/PageHeader";
 
-const fetchCars = async (sort) => {
+const fetchSortedCars = async (sort) => {
   
   let data;
   switch (sort) {
@@ -37,9 +37,22 @@ const fetchCars = async (sort) => {
   return data.json();
 };
 
+const fetchFilteredCars = async (condition, model, fuel) => {
+  let data;
+  data = await fetch(`http://localhost:1337/api/cars?populate=*${fuel == "all" ? '' : `&filters[fuelType][$eq]=${fuel}`}`);
+  return data.json();
+}
+
 const Cars = async ({ params, searchParams }) => {
   const { sort } = searchParams;
-  const cars = await fetchCars(sort);
+  let cars;
+  const { condition, model, fuel } = searchParams;
+  if(condition){
+    cars = await fetchFilteredCars(condition, model, fuel);
+  }else{
+    cars = await fetchSortedCars(sort);
+  }
+  
 
   return (
     <>

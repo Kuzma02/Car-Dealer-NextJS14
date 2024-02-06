@@ -27,3 +27,7 @@ export async function sortCars(formData) {
       break;
   }
 }
+
+export async function filterCars(formData){
+  redirect(`/cars?condition=${formData.get("conditions") || "all"}&model=${formData.get("models") || 'all'}&fuel=${formData.get("fuels") || 'all'}`);
+}

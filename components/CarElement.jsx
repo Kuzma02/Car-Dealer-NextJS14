@@ -22,7 +22,7 @@ const CarElement = ({ carTitle, carImage, mileage, transmission, fuelType, price
             <div className='flex justify-between font-light mt-2 border-y-[1px] py-3'>
                 <div className='flex flex-col items-center text-base gap-y-1'>
                     <IoSpeedometerOutline className='text-2xl' />
-                    <p>{ mileage }</p>
+                    <p>{ mileage } miles</p>
                 </div>
                 <div className='flex flex-col items-center text-base gap-y-1'>
                     <BsFillFuelPumpFill className='text-2xl'  />
