@@ -46,7 +46,7 @@ const Footer = () => {
           </svg>
         </a>
       </nav>
-      <p className="text-white font-semibold text-2xl max-sm:text-lg">
+      <p className="text-white font-semibold text-2xl max-sm:text-lg max-[400px]:text-base">
         Copyright © 2024 - All right reserved
       </p>
     </footer>

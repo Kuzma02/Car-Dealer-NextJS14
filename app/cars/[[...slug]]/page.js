@@ -120,6 +120,7 @@ const Cars = async ({ params, searchParams }) => {
             cars.data.map((car) => (
               <CarElement
                 key={car.id}
+                id={car.id}
                 carTitle={car?.attributes?.carTitle}
                 carImage={car?.attributes?.carMainImage?.data?.attributes?.url}
                 mileage={car?.attributes?.mileage}

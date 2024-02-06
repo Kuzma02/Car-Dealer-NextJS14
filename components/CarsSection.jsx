@@ -18,7 +18,7 @@ const CarsSection = async ({ sectionTitle, sectionDesc}) => {
       </p>
       <div className="flex flex-wrap justify-center gap-x-5 gap-y-5 mt-5">
         {cars && cars.data.map((car) => (
-          <CarElement key={car.id} carTitle={car?.attributes?.carTitle} carImage={car?.attributes?.carMainImage?.data?.attributes?.url} mileage={car?.attributes?.mileage} fuelType={car?.attributes?.fuelType} transmission={car?.attributes?.transmission} price={car?.attributes?.price} />
+          <CarElement key={car.id} id={car.id} carTitle={car?.attributes?.carTitle} carImage={car?.attributes?.carMainImage?.data?.attributes?.url} mileage={car?.attributes?.mileage} fuelType={car?.attributes?.fuelType} transmission={car?.attributes?.transmission} price={car?.attributes?.price} />
         ))}
         
       </div>

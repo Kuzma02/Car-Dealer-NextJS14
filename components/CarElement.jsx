@@ -4,11 +4,12 @@ import { IoSpeedometerOutline } from "react-icons/io5";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { TbAutomaticGearbox } from "react-icons/tb";
 import { BsArrowUpRight } from "react-icons/bs";
+import Link from "next/link";
 
 
 
 
-const CarElement = ({ carTitle, carImage, mileage, transmission, fuelType, price }) => {
+const CarElement = ({ carTitle, carImage, mileage, transmission, fuelType, price, id }) => {
     const carImageFull = `http://localhost:1337${carImage}`;
   return (
     <div className='w-[420px] border rounded-xl'>
@@ -35,7 +36,7 @@ const CarElement = ({ carTitle, carImage, mileage, transmission, fuelType, price
             </div>
             <div className="flex justify-between py-2">
                 <p className='text-xl'>${ price }</p>
-                <button className='text-lg text-blue-600 font-normal flex gap-x-2 items-center hover:bg-blue-100'>View Details <BsArrowUpRight className='text-xl' /></button>
+                <Link href={`/cars/${id}`} className='text-lg text-blue-600 font-normal flex gap-x-2 items-center hover:bg-blue-100'>View Details <BsArrowUpRight className='text-xl' /></Link>
             </div>
         </div>
     </div>
